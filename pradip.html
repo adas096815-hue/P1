@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(135deg, #ff6bcb, #ffa8e2, #ffd3e8);
+            text-align: center;
+            overflow-x: hidden;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 50px;
+            margin-top: 30px;
+            color: white;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.4);
+            animation: fadeIn 2s ease-in-out;
+            position: relative;
+            z-index: 10;
+        }
+
+        .gallery {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .gallery img {
+            width: 260px;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0px 6px 20px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.08);
+        }
+
+        button {
+            margin-top: 25px;
+            padding: 14px 30px;
+            font-size: 22px;
+            color: white;
+            background: #ff3f7f;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+            transition: 0.3s;
+            position: relative;
+            z-index: 10;
+        }
+
+        button:hover {
+            background: #ff174f;
+        }
+
+        #wish {
+            margin: 40px auto;
+            width: 80%;
+            color: white;
+            font-size: 26px;
+            font-weight: 500;
+            line-height: 40px;
+            display: none;
+            animation: fadeIn 2s ease-in-out;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 10;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        /* ---------------- BALLOONS ANIMATION ---------------- */
+
+        .balloon {
+            position: absolute;
+            bottom: -150px;
+            width: 80px;
+            height: 100px;
+            border-radius: 50%;
+            opacity: 0.9;
+            animation: floatUp 8s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-120vh) rotate(20deg); }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADING -->
+    <h1>🎉 Happy Birthday Pradip 🎉</h1>
+
+    <!-- PHOTO GALLERY -->
+    <div class="gallery">
+        <img src="C:\Users\ARPITA\OneDrive\Pictures\pradip\p1.jpg" alt="Photo 1">
+        <img src="C:\Users\ARPITA\OneDrive\Pictures\pradip\p2.jpg" alt="Photo 2">
+        <img src="C:\Users\ARPITA\OneDrive\Pictures\pradip\p3.jpg"alt="Photo 3">
+        <img src="C:\Users\ARPITA\OneDrive\Pictures\pradip\p4.jpg" alt="Photo 4">
+    </div>
+
+    <!-- BUTTON -->
+    <button onclick="showWish()">Click for  Birthday Wish 🎁</button>
+
+    <!-- WISH TEXT -->
+    <p id="wish"></p>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        function showWish() {
+            document.getElementById("wish").style.display = "block";
+            document.getElementById("wish").innerHTML =
+            "🎂💖 <b>Happiest Birthday to you, Pradip!</b> 💖🎂<br><br>" +
+            "May your heart be filled with endless joy, your days with smiles, " +
+            "and your life with success and blessings. 🌟<br><br>" +
+            "You deserve all the happiness in the world. Keep shining, keep smiling, " +
+            "and keep being amazing! 💕<br><br>" +
+            
+            "<b>Happy Birthday, My Dear Friend! 🎉🎁🎂 FROM your stupid and blocklisted friend ARPITA......... YOURS.............</b>";
+            
+        }
+
+        /* ---------------- CREATE BALLOONS ---------------- */
+        const colors = ["#ff4f81", "#ffcc00", "#6bff7a", "#6bc9ff", "#ff6b9d"];
+
+        function createBalloon() {
+            const balloon = document.createElement("div");
+            balloon.classList.add("balloon");
+
+            // random color
+            balloon.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+            // random horizontal position
+            balloon.style.left = Math.random() * window.innerWidth + "px";
+
+            // random animation duration
+            balloon.style.animationDuration = (6 + Math.random() * 5) + "s";
+
+            document.body.appendChild(balloon);
+
+            // remove balloon after animation
+            setTimeout(() => {
+                balloon.remove();
+            }, 11000);
+        }
+
+        // create balloons continuously
+        setInterval(createBalloon, 600);
+    </script>
+
+</body>
+</html>
